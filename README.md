@@ -1,3 +1,17 @@
+> Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction/download <br>
+> A simple CSV (comma-separated-value) dataset for heart failure prediction from Kaggle <br>
+
+# Dataset preview
+| Age | Sex | ChestPainType | RestingBP | Cholesterol | FastingBS | RestingECG | MaxHR | ExerciseAngina | Oldpeak | ST_Slope | HeartDisease |
+| --- | --- | ------------- | --------- | ----------- | --------- | ---------- | ----- | -------------- | ------- | -------- | ------------ |
+| 40  | M   | ATA           | 140       | 289         | 0         | Normal     | 172   | N              | 0       | Up       | 0            |
+| 49  | F   | NAP           | 160       | 180         | 0         | Normal     | 156   | N              | 1       | Flat     | 1            |
+| 37  | M   | ATA           | 130       | 283         | 0         | ST         | 98    | N              | 0       | Up       | 0            |
+| 48  | F   | ASY           | 138       | 214         | 0         | Normal     | 108   | Y              | 1.5     | Flat     | 1            |
+| 54  | M   | NAP           | 150       | 195         | 0         | ST         | 122   | N              | 0       | Up       | 0            |
+| 39  | M   | NAP           | 120       | 339         | 0         | ST         | 170   | N              | 0       | Up       | 0            |
+
+
 # Load Data as RDD
 ```scala
 val spark = SparkSession
