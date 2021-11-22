@@ -14,6 +14,8 @@
 
 # Load Data as RDD
 ```scala
+import org.apache.spark.sql.SparkSession
+
 val spark = SparkSession
     .builder()
     .appName("Some Name")
