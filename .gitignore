@@ -4,3 +4,4 @@
 .metals/
 project/
 target/
+.vscode/
