@@ -105,6 +105,7 @@ println(
 # Sample
 ```scala    
 val rdd_sample = rdd.sample(false, 0.2, 42)
+
 rdd_sample.collect().foreach(println)
 println(rdd_sample.count())
 println(rdd.count())
