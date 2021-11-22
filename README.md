@@ -85,7 +85,8 @@ rdd
 ```
 # Filter
 ```scala    
-// Females with Normal ECG having chestPain = ATA (1, 2, 6)
+// Females observations with Normal restingECG having chestPain = ATA 
+// columns sex=1, chestPain=2 and restingECG=6
 
 println(
   rdd
