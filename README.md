@@ -306,7 +306,7 @@ val collection =
 collection.pipe("head -n 5 data/heart2.csv").collect().foreach(println)
 ```
 
-// Coalesce
+# Coalesce
 ```scala
 val collectionWithThreePartitions = spark.sparkContext.parallelize(Array.range(1, 1001), 3)
 
@@ -314,6 +314,18 @@ val collectionWithOnePartition = collectionWith3Partitions.coalesce(1)
 
 println(f"Before Coalesce: ${collectionWithThreePartitions.getNumPartitions}")
 println(f"After Coalesce: ${collectionWithOnePartition.getNumPartitions}")
+```
+
+# Repartition
+```scala
+val collectionWith3Partitions = spark.sparkContext.parallelize(Array.range(1, 1001), 3)
+
+val collectionWith2Partitions = collectionWith3Partitions.repartition(2)
+
+println(
+  f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}"
+)
+println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
 ```
 
 # Advanced examples

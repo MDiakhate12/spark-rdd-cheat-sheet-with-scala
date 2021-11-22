@@ -330,5 +330,15 @@ object Main {
     // println(f"Before Coalesce: ${collectionWith3Partitions.getNumPartitions}")
     // println(f"After Coalesce: ${collectionWith1Partition.getNumPartitions}")
 
+    // Repartition
+    val collectionWith3Partitions = spark.sparkContext.parallelize(Array.range(1, 1001), 3)
+
+    val collectionWith2Partitions = collectionWith3Partitions.repartition(2)
+
+    println(
+      f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}"
+    )
+    println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
+
   }
 }
