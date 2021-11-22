@@ -18,7 +18,7 @@ import org.apache.spark.sql.SparkSession
 
 val spark = SparkSession
     .builder()
-    .appName("Some Name")
+    .appName("Spark RDD Cheat Sheet with Scala")
     .master("local")
     .getOrCreate()
 
@@ -272,7 +272,7 @@ val joinned_part = part1.join(part2)
 joinned_part.take(3).foreach(println)
 println()
 ```
-# Co Group VS Join VS Cartesian
+# CoGroup VS Join VS Cartesian
 ```scala    
 val part1 =
   spark.sparkContext.parallelize(
@@ -298,16 +298,22 @@ println()
 
 # Pipe
 ```scala    
-val part1 =
+val collection =
   spark.sparkContext.parallelize(
     Seq(("A", "Diaf-From-1"), ("A", "Diaf-From-1"), ("B", "Yeah-From-1"))
   )
-val part2 =
-  spark.sparkContext.parallelize(
-    Seq(("A", "Bro-From-2"), ("A", "Walabook-From-2"))
-  )
 
-part1.pipe("head -n 5 data/heart2.csv").collect().foreach(println)
+collection.pipe("head -n 5 data/heart2.csv").collect().foreach(println)
+```
+
+// Coalesce
+```scala
+val collectionWithThreePartitions = spark.sparkContext.parallelize(Array.range(1, 1001), 3)
+
+val collectionWithOnePartition = collectionWith3Partitions.coalesce(1)
+
+println(f"Before Coalesce: ${collectionWithThreePartitions.getNumPartitions}")
+println(f"After Coalesce: ${collectionWithOnePartition.getNumPartitions}")
 ```
 
 # Advanced examples
