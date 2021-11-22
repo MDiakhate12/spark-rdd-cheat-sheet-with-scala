@@ -147,10 +147,8 @@ val distinct_sample = union_sample.distinct()
 
 println(f"Distint Sample: ${distinct_sample.count()}")
 
-def a = "Bro"
+```
 
-lazy val b = "Diaf"
-    ```
 # GroupBy
 ```scala    
 rdd
@@ -160,6 +158,7 @@ rdd
   .collect()
   .foreach(line => println(f"${line._1}: ${line._2}"))
 ```
+
 # Aggregate
 ```scala    
 val N = rdd.count()
