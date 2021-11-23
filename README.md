@@ -27,7 +27,6 @@ val rdd = spark.sparkContext.textFile("data/heart.csv")
 ```
 
 # Map
-
 ```scala
 val rdd = spark.sparkContext.textFile("data/heart.csv")
 
@@ -36,6 +35,7 @@ rdd
   .collect()
   .foreach(println)
 ```
+
 # FlatMap
 ```scala    
 rdd
@@ -53,6 +53,7 @@ collection
   .collect()
   .foreach(println)
 ```
+
 # Map Partitions With Index
 ```scala    
 val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
@@ -65,6 +66,7 @@ collection
   .collect()
   .foreach(println)
 ```
+
 # For Each Partitions
 ```scala    
 val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
@@ -74,8 +76,8 @@ collection.foreachPartition(p => {
   println()
 })
 ```
-# ReduceByKey
 
+# ReduceByKey
 ```scala    
 // Count Number of M and F
 rdd
@@ -84,6 +86,7 @@ rdd
   .collect()
   .foreach(println)
 ```
+
 # Filter
 ```scala    
 // Females observations with Normal restingECG having chestPain = ATA 
@@ -111,6 +114,7 @@ rdd_sample.collect().foreach(println)
 println(rdd_sample.count())
 println(rdd.count())
 ```
+
 # Union
 ```scala    
 val sample1 = rdd.sample(withReplacement = false, fraction = 0.3, seed = 42)
@@ -122,6 +126,7 @@ val union_sample = sample1.union(sample2)
 
 println(f"Union Sample: ${union_sample.count()}")
 ```
+
 # Intersection 
 ```scala    
 val sample1 = rdd.sample(withReplacement = false, fraction = 0.6, seed = 42)
@@ -133,6 +138,7 @@ val intersection_rdd = sample1.intersection(sample2)
 
 println(f"Intersection Sample: ${intersection_rdd.count()}")
 ```
+
 # Distinct
 ```scala    
 val sample1 = rdd.sample(withReplacement = true, fraction = 0.8, seed = 42)
@@ -190,6 +196,7 @@ val mean2 = rdd
 
 println(mean2)
 ```
+
 # Aggregate (2)
 ```scala    
 val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
@@ -207,6 +214,7 @@ println(
   )
 )
 ```
+
 # Sort By
 ```scala    
 rdd
@@ -217,6 +225,7 @@ rdd
   .collect()
   .foreach(println)
 ```
+
 # Save As Text File
 ```scala    
 // Add new column "Id"
