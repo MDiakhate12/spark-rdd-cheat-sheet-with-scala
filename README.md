@@ -1,6 +1,6 @@
 > Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction/download <br>
 > A simple CSV (comma-separated-value) dataset for heart failure prediction from Kaggle <br>
-> O Tip: If you run code snippet on spark-shell, you can just do <rdd>.collect() instead of <rdd>.collect().foreach(println) <br>
+> Tip: If you run code snippet on spark-shell, you can just do <rdd>.collect() instead of <rdd>.collect().foreach(println) <br>
 
 # Dataset preview
 | Age | Sex | ChestPainType | RestingBP | Cholesterol | FastingBS | RestingECG | MaxHR | ExerciseAngina | Oldpeak | ST_Slope | HeartDisease |
