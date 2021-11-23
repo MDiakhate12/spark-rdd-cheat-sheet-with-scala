@@ -350,6 +350,7 @@ println(f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}")
 println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
 ```
 # Repartition And Sort Within Partitions
+```scala
 // Collection with keys from 1 to 15
 val collectionBeforeRepartition = spark.sparkContext.parallelize(
   Seq(
@@ -377,6 +378,7 @@ collectionAfterRepartition.foreachPartition(p => {
   p.toArray.foreach(i => print(f"$i "))
   println()
 })
+```
 
 # Advanced examples
 ## Create rdd schema from case class
