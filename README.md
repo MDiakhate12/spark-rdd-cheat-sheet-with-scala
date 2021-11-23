@@ -189,7 +189,7 @@ val mean2 = rdd
 
 println(mean2)
 ```
-# Aggregate
+# Aggregate (2)
 ```scala    
 val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
 
@@ -345,7 +345,7 @@ case class Patient(
   oldpeak: String = ""
 )
 
-// Filter with case class fields and pattern matching
+// Filter using case class fields and pattern matching
 print(
   rdd
     .map(line => line.split(","))
@@ -379,7 +379,7 @@ print(
     .count()
 )
 
-// A simpler example with filter with case case
+// A simpler example using filter with case case
 
 println(
   rdd
