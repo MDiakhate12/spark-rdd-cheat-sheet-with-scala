@@ -321,6 +321,18 @@ object Main {
     //     Seq(("A", "Diaf-From-1"), ("A", "Diaf-From-1"), ("B", "Yeah-From-1"))
     //   )
 
+    // Glom
+    // Show all partitions in a single array
+    // val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
+    // collection
+    //   .glom()
+    //   .collect()
+    //   .foreach(p => {
+    //     println
+    //     p.foreach(i => print(f"$i "))
+    //     println
+    //   })
+
     // collection.pipe("head -n 5 data/heart2.csv").collect().foreach(println)
 
     // Coalesce
@@ -344,45 +356,45 @@ object Main {
     // println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
 
     // Repartition And Sort Within Partitions
-    val collectionBeforeRepartition = spark.sparkContext.parallelize(
-      Seq(
-        ("7", 7),
-        ("15", 15),
-        ("14", 14),
-        ("2", 2),
-        ("9", 9),
-        ("1", 1),
-        ("10", 10),
-        ("3", 3),
-        ("6", 6),
-        ("8", 8),
-        ("4", 4),
-        ("12", 12),
-        ("13", 13),
-        ("11", 11),
-        ("5", 5)
-      ),
-      2
-    )
+    // val collectionBeforeRepartition = spark.sparkContext.parallelize(
+    //   Seq(
+    //     (7, 7),
+    //     (15, 15),
+    //     (14, 14)
+    //     (2, 2),
+    //     (9, 9),
+    //     (1, 1),
+    //     (10, 10),
+    //     (3, 3),
+    //     (6, 6),
+    //     (8, 8),
+    //     (4, 4),
+    //     (12, 12),
+    //     (13, 13),
+    //     (11, 11),
+    //     (5, 5)
+    //   ),
+    //   2
+    // )
 
-    collectionBeforeRepartition.foreachPartition(p => {
-      println()
-      print(f"Partition: ")
-      p.toArray.foreach(i => print(f"$i "))
-      println()
-    })
+    // collectionBeforeRepartition.foreachPartition(p => {
+    //   println()
+    //   print(f"Partition: ")
+    //   p.toArray.foreach(i => print(f"$i "))
+    //   println()
+    // })
 
-    val collectionAfterRepartition =
-      collectionBeforeRepartition.repartitionAndSortWithinPartitions(
-        new RangePartitioner(3, collectionBeforeRepartition)
-      )
+    // val collectionAfterRepartition =
+    //   collectionBeforeRepartition.repartitionAndSortWithinPartitions(
+    //     new RangePartitioner(3, collectionBeforeRepartition)
+    //   )
 
-    collectionAfterRepartition.foreachPartition(p => {
-      println()
-      print(f"Partition: ")
-      p.toArray.foreach(i => print(f"$i "))
-      println()
-    })
+    // collectionAfterRepartition.foreachPartition(p => {
+    //   println()
+    //   print(f"Partition: ")
+    //   p.toArray.foreach(i => print(f"$i "))
+    //   println()
+    // })
 
   }
 }

@@ -1,5 +1,6 @@
 > Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction/download <br>
 > A simple CSV (comma-separated-value) dataset for heart failure prediction from Kaggle <br>
+> O Tip: If you run code snippet on spark-shell, you can just do <rdd>.collect() instead of <rdd>.collect().foreach(println) <br>
 
 # Dataset preview
 | Age | Sex | ChestPainType | RestingBP | Cholesterol | FastingBS | RestingECG | MaxHR | ExerciseAngina | Oldpeak | ST_Slope | HeartDisease |
@@ -304,6 +305,20 @@ val collection =
   )
 
 collection.pipe("head -n 5 data/heart2.csv").collect().foreach(println)
+```
+
+# Glom
+```scala
+// Show all partitions in a single array
+val collection = spark.sparkContext.parallelize(Array.range(1, 11), 2)
+collection
+  .glom()
+  .collect()
+  .foreach(p => {
+    println
+    p.foreach(i => print(f"$i "))
+    println
+  })
 ```
 
 # Coalesce
