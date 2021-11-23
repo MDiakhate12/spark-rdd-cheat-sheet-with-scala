@@ -322,9 +322,7 @@ val collectionWith3Partitions = spark.sparkContext.parallelize(Array.range(1, 10
 
 val collectionWith2Partitions = collectionWith3Partitions.repartition(2)
 
-println(
-  f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}"
-)
+println(f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}")
 println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
 ```
 

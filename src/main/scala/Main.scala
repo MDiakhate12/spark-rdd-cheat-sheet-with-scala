@@ -2,7 +2,9 @@ import org.apache.spark.sql.SparkSession
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
 import org.apache.spark.rdd.RDD
-import com.fasterxml.jackson.module.scala.deser.overrides
+import org.apache.spark.Partitioner
+import org.apache.spark.HashPartitioner
+import org.apache.spark.RangePartitioner
 
 object Main {
 
@@ -331,14 +333,56 @@ object Main {
     // println(f"After Coalesce: ${collectionWith1Partition.getNumPartitions}")
 
     // Repartition
-    val collectionWith3Partitions = spark.sparkContext.parallelize(Array.range(1, 1001), 3)
+    // val collectionWith3Partitions =
+    //   spark.sparkContext.parallelize(Array.range(1, 1001), 3)
 
-    val collectionWith2Partitions = collectionWith3Partitions.repartition(2)
+    // val collectionWith2Partitions = collectionWith3Partitions.repartition(2)
 
-    println(
-      f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}"
+    // println(
+    //   f"Before Repartition: ${collectionWith3Partitions.getNumPartitions}"
+    // )
+    // println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
+
+    // Repartition And Sort Within Partitions
+    val collectionBeforeRepartition = spark.sparkContext.parallelize(
+      Seq(
+        ("7", 7),
+        ("15", 15),
+        ("14", 14),
+        ("2", 2),
+        ("9", 9),
+        ("1", 1),
+        ("10", 10),
+        ("3", 3),
+        ("6", 6),
+        ("8", 8),
+        ("4", 4),
+        ("12", 12),
+        ("13", 13),
+        ("11", 11),
+        ("5", 5)
+      ),
+      2
     )
-    println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
+
+    collectionBeforeRepartition.foreachPartition(p => {
+      println()
+      print(f"Partition: ")
+      p.toArray.foreach(i => print(f"$i "))
+      println()
+    })
+
+    val collectionAfterRepartition =
+      collectionBeforeRepartition.repartitionAndSortWithinPartitions(
+        new RangePartitioner(3, collectionBeforeRepartition)
+      )
+
+    collectionAfterRepartition.foreachPartition(p => {
+      println()
+      print(f"Partition: ")
+      p.toArray.foreach(i => print(f"$i "))
+      println()
+    })
 
   }
 }
