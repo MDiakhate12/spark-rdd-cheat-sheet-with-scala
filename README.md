@@ -1,3 +1,6 @@
+
+# Spark RDD Cheat Sheet with Scala
+
 > Dataset: https://www.kaggle.com/fedesoriano/heart-failure-prediction/download <br>
 > A simple CSV (comma-separated-value) dataset for heart failure prediction from Kaggle <br>
 > Tip: If you run code snippet on spark-shell, you can just do [rdd].collect() instead of [rdd].collect().foreach(println) <br>
