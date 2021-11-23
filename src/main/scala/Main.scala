@@ -356,42 +356,30 @@ object Main {
     // println(f"After Repartition: ${collectionWith2Partitions.getNumPartitions}")
 
     // Repartition And Sort Within Partitions
+    // Collection with keys from 1 to 15
     // val collectionBeforeRepartition = spark.sparkContext.parallelize(
     //   Seq(
-    //     (7, 7),
-    //     (15, 15),
-    //     (14, 14)
-    //     (2, 2),
-    //     (9, 9),
-    //     (1, 1),
-    //     (10, 10),
-    //     (3, 3),
-    //     (6, 6),
-    //     (8, 8),
-    //     (4, 4),
-    //     (12, 12),
-    //     (13, 13),
-    //     (11, 11),
-    //     (5, 5)
-    //   ),
-    //   2
+    //     (7, 7),(15, 15),(14, 14),(2, 2),(9, 9),
+    //     (1, 1),(10, 10),(3, 3),(6, 6),(8, 8),
+    //     (4, 4),(12, 12),(13, 13),(11, 11),(5, 5)
+    //   )
     // )
 
     // collectionBeforeRepartition.foreachPartition(p => {
     //   println()
-    //   print(f"Partition: ")
+    //   print(f"Before Partition: ")
     //   p.toArray.foreach(i => print(f"$i "))
     //   println()
     // })
 
     // val collectionAfterRepartition =
     //   collectionBeforeRepartition.repartitionAndSortWithinPartitions(
-    //     new RangePartitioner(3, collectionBeforeRepartition)
+    //     new RangePartitioner(2, collectionBeforeRepartition)
     //   )
 
     // collectionAfterRepartition.foreachPartition(p => {
     //   println()
-    //   print(f"Partition: ")
+    //   print(f"After Partition: ")
     //   p.toArray.foreach(i => print(f"$i "))
     //   println()
     // })
